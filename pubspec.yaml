@@ -12,6 +12,9 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
 
+  # UI
+  flutter_svg: ^2.0.2
+
   # Architecture
   stacked: ^3.1.0+3
   stacked_services: ^0.9.9
@@ -39,4 +42,6 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/icons/
 
