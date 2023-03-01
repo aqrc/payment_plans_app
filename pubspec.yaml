@@ -12,13 +12,28 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
 
+  # Architecture
+  stacked: ^3.1.0+3
+  stacked_services: ^0.9.9
+
+  # Network
+  dio: ^4.0.6
+  json_annotation: ^4.8.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  build_runner: ^2.3.3
+  stacked_generator: ^0.8.5
+  json_serializable: ^6.6.1
 
 flutter:
   uses-material-design: true
+
+  # To generate run in terminal:
+  # flutter pub run build_runner build --delete-conflicting-outputs
+  generate: true
 
   # To add assets to your application, add an assets section, like this:
   # assets:

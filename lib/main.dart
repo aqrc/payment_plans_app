@@ -1,18 +1,10 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(
-    const MaterialApp(
-      home: MyHomePage(),
-    ),
-  );
-}
+import 'app.dart';
+import 'stacked/stacked_app.locator.dart';
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+void main() async {
+  await setupLocator();
 
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
+  runApp(const App());
 }
