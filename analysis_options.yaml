@@ -2,7 +2,9 @@
 include: package:flutter_lints/flutter.yaml
 analyzer: 
   exclude: 
-    - "**/*.g.dart"
+#    - "**/*.g.dart"
+    - "**/*.locator.dart"
+    - "**/*.router.dart"
     - "**/*.gr.dart"
     - "**/*.freezed.dart"
     - "lib/generated/intl/**"

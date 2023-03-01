@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:stacked/stacked_annotations.dart';
 
+import '../services/payment_plans_api_client.dart';
 import '../ui/home/home_view.dart';
 
 @StackedApp(
@@ -12,6 +13,7 @@ import '../ui/home/home_view.dart';
   ],
   dependencies: [
     LazySingleton(classType: Dio),
+    LazySingleton(classType: PaymentPlansApiClient),
   ],
   locatorName: 'locator',
   locatorSetupName: 'setupLocator',
