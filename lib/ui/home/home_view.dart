@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../assets/custom_icons.dart';
-import '../../theme/custom_colors.dart';
 import '../../theme/custom_theme.dart';
 import '../common/custom_icon.dart';
 import '../common/outlined_gradient_button.dart';
+import 'components/payment_plan_selection_card.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -52,20 +52,7 @@ class HomeView extends StatelessWidget {
                   style: CustomTheme.textTheme.headlineSmall,
                 ),
                 const SizedBox(height: 12),
-                Container(
-                  decoration: const BoxDecoration(
-                    color: CustomColors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                    border: Border.fromBorderSide(
-                      BorderSide(color: CustomColors.green, width: 2),
-                    ),
-                  ),
-                  child: const SizedBox(
-                    height: 178,
-                    width: double.infinity,
-                    child: Center(child: Text("Temporary")), // TODO implement
-                  ),
-                ),
+                const PaymentPlanSelectionCard(),
               ],
             ),
             OutlinedGradientButton.gradient(

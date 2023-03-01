@@ -7,6 +7,7 @@ class CustomColors {
   static const Color blackGreen31 = Color(0x4F082431);
   static const Color green = Color(0xFF00BA77);
   static const Color teal = Color(0xFF1BD2BC);
-  static const Color black = Color(0xFF000000);
+  static const Color black = Colors.black;
+  static const Color black20 = Color(0x33000000);
   static const Color white = Color(0xFFFFFFFF);
 }
