@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
 
 import '../../assets/custom_icons.dart';
 import '../../theme/custom_theme.dart';
 import '../common/custom_icon.dart';
 import '../common/outlined_gradient_button.dart';
-import 'components/payment_plan_selection_card.dart';
+import 'components/payment_plan_selection_card_view.dart';
+import 'home_viewmodel.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -18,48 +20,58 @@ class HomeView extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 35),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Column(
-              children: [
-                Text(
-                  "Your rent",
-                  style: CustomTheme.textTheme.headlineSmall,
-                ),
-                const SizedBox(height: 4),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.baseline,
-                  textBaseline: TextBaseline.alphabetic,
+        child: ViewModelBuilder<HomeViewModel>.reactive(
+          viewModelBuilder: () => HomeViewModel(),
+          builder: (context, viewModel, child) => viewModel.isBusy
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(
-                      "\$1,500",
-                      style: CustomTheme.textTheme.headlineMedium,
+                    Column(
+                      children: [
+                        Text(
+                          "Your rent",
+                          style: CustomTheme.textTheme.headlineSmall,
+                        ),
+                        const SizedBox(height: 4),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            Text(
+                              "\$${viewModel.totalPaymentDollars}",
+                              style: CustomTheme.textTheme.headlineMedium,
+                            ),
+                            Text(
+                              ".${viewModel.totalPaymentCents}",
+                              style: CustomTheme.textTheme.titleLarge,
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                    Text(
-                      ".50",
-                      style: CustomTheme.textTheme.titleLarge,
+                    Column(
+                      children: [
+                        Text(
+                          "Your installments plan",
+                          style: CustomTheme.textTheme.headlineSmall,
+                        ),
+                        const SizedBox(height: 12),
+                        PaymentPlanSelectionCardView(
+                          paymentPlans: viewModel.paymentPlans,
+                          setSelectedPlanCallback: viewModel.setSelectedPlan,
+                        ),
+                      ],
+                    ),
+                    OutlinedGradientButton.gradient(
+                      onPressed: viewModel.submitSelectedPlan,
+                      title: "Split my rent",
                     ),
                   ],
                 ),
-              ],
-            ),
-            Column(
-              children: [
-                Text(
-                  "Your installments plan",
-                  style: CustomTheme.textTheme.headlineSmall,
-                ),
-                const SizedBox(height: 12),
-                const PaymentPlanSelectionCard(),
-              ],
-            ),
-            OutlinedGradientButton.gradient(
-              onPressed: () {},
-              title: "Split my rent",
-            ),
-          ],
         ),
       ),
     );

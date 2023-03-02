@@ -13,12 +13,13 @@ class OutlinedGradientButton extends StatelessWidget {
   factory OutlinedGradientButton.outlined({
     required String title,
     required void Function() onPressed,
+    bool hasGradient = false,
   }) {
     return OutlinedGradientButton(
         title: title,
         onPressed: onPressed,
         hasOutline: true,
-        hasGradient: false,
+        hasGradient: hasGradient,
         borderRadius: const BorderRadius.all(Radius.circular(14)));
   }
 

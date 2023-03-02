@@ -10,6 +10,7 @@ import 'package:dio/src/dio.dart';
 import 'package:stacked_core/stacked_core.dart';
 
 import '../services/payment_plans_api_client.dart';
+import '../services/payment_plans_service.dart';
 
 final locator = StackedLocator.instance;
 
@@ -22,4 +23,5 @@ Future<void> setupLocator(
 // Register dependencies
   locator.registerLazySingleton(() => Dio());
   locator.registerLazySingleton(() => PaymentPlansApiClient());
+  locator.registerLazySingleton(() => PaymentPlansService());
 }

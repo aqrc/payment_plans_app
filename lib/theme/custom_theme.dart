@@ -33,8 +33,11 @@ class CustomTheme {
 
   static ThemeData lightTheme = ThemeData(
     textTheme: textTheme,
-    splashColor: CustomColors.green,
-    colorScheme: const ColorScheme.light(),
+    splashColor: CustomColors.green20,
+    highlightColor: Colors.transparent,
+    colorScheme: const ColorScheme.light(
+      primary: CustomColors.green,
+    ),
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       elevation: 0,
