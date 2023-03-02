@@ -10,5 +10,6 @@ class CustomColors {
   static const Color teal = Color(0xFF1BD2BC);
   static const Color black = Colors.black;
   static const Color black20 = Color(0x33000000);
+  static const Color black10 = Color(0x1A000000);
   static const Color white = Color(0xFFFFFFFF);
 }

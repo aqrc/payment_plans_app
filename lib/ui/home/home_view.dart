@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../assets/custom_icons.dart';
+import '../../theme/custom_colors.dart';
 import '../../theme/custom_theme.dart';
 import '../common/custom_icon.dart';
 import '../common/outlined_gradient_button.dart';
@@ -43,7 +44,7 @@ class HomeView extends StatelessWidget {
                           children: [
                             Text(
                               "\$${viewModel.totalPaymentDollars}",
-                              style: CustomTheme.textTheme.headlineMedium,
+                              style: CustomTheme.textTheme.displaySmall,
                             ),
                             Text(
                               ".${viewModel.totalPaymentCents}",
@@ -66,12 +67,23 @@ class HomeView extends StatelessWidget {
                         ),
                       ],
                     ),
-                    OutlinedGradientButton.gradient(
-                      onPressed: () async {
-                        final result = await viewModel.submitSelectedPlan();
-                        await _showResult(context, result);
-                      },
-                      title: "Split my rent",
+                    Container(
+                      decoration: const BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0, 2),
+                            blurRadius: 10,
+                            color: CustomColors.black20,
+                          ),
+                        ],
+                      ),
+                      child: OutlinedGradientButton.gradient(
+                        onPressed: () async {
+                          final result = await viewModel.submitSelectedPlan();
+                          await _showResult(context, result);
+                        },
+                        title: "Split my rent",
+                      ),
                     ),
                   ],
                 ),

@@ -4,15 +4,18 @@ import 'custom_colors.dart';
 
 class CustomTheme {
   static const TextTheme textTheme = TextTheme(
-    headlineMedium: TextStyle(
+    displaySmall: TextStyle(
       color: CustomColors.blue,
-      fontSize: 40,
+      fontSize: 50,
     ),
     headlineSmall: TextStyle(
       color: CustomColors.blue80,
       fontSize: 14,
     ),
-    titleLarge: TextStyle(color: CustomColors.blue),
+    titleLarge: TextStyle(
+      color: CustomColors.blue,
+      fontSize: 20,
+    ),
     titleMedium: TextStyle(
       color: CustomColors.blackGreen,
       fontSize: 14,
@@ -35,6 +38,7 @@ class CustomTheme {
     textTheme: textTheme,
     splashColor: CustomColors.green20,
     highlightColor: Colors.transparent,
+    shadowColor: CustomColors.teal,
     colorScheme: const ColorScheme.light(
       primary: CustomColors.green,
     ),

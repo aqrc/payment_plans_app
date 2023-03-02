@@ -31,6 +31,13 @@ class PaymentPlanSelectionCardView extends StatelessWidget {
           border: Border.fromBorderSide(
             BorderSide(color: CustomColors.green, width: 2),
           ),
+          boxShadow: [
+            BoxShadow(
+              offset: Offset(0, 1),
+              blurRadius: 30,
+              color: CustomColors.black10,
+            ),
+          ],
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 22, horizontal: 16),
