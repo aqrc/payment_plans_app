@@ -6,7 +6,7 @@ import '../../theme/custom_theme.dart';
 class OutlinedGradientButton extends StatelessWidget {
   final String title;
   final void Function() onPressed;
-  final BorderRadius? borderRadius;
+  final BorderRadius borderRadius;
   final bool hasOutline;
   final bool hasGradient;
 
@@ -19,7 +19,7 @@ class OutlinedGradientButton extends StatelessWidget {
         onPressed: onPressed,
         hasOutline: true,
         hasGradient: false,
-        borderRadius: const BorderRadius.all(Radius.circular(14.5)));
+        borderRadius: const BorderRadius.all(Radius.circular(14)));
   }
 
   factory OutlinedGradientButton.gradient({
@@ -43,14 +43,14 @@ class OutlinedGradientButton extends StatelessWidget {
         onPressed: onPressed,
         hasOutline: true,
         hasGradient: true,
-        borderRadius: const BorderRadius.all(Radius.circular(14.5)));
+        borderRadius: const BorderRadius.all(Radius.circular(14)));
   }
 
   const OutlinedGradientButton({
     Key? key,
     required this.title,
     required this.onPressed,
-    this.borderRadius,
+    this.borderRadius = BorderRadius.zero,
     this.hasOutline = true,
     this.hasGradient = true,
   }) : super(key: key);
@@ -60,8 +60,18 @@ class OutlinedGradientButton extends StatelessWidget {
     return SizedBox(
       height: 40,
       child: Material(
-        borderRadius: borderRadius,
+        color: CustomColors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: borderRadius,
+          side: hasOutline
+              ? const BorderSide(
+                  color: CustomColors.green,
+                  width: 2,
+                )
+              : BorderSide.none,
+        ),
         child: Ink(
+          height: 10,
           decoration: BoxDecoration(
             borderRadius: borderRadius,
             gradient: hasGradient
@@ -69,30 +79,17 @@ class OutlinedGradientButton extends StatelessWidget {
                     colors: [CustomColors.green, CustomColors.teal],
                   )
                 : null,
-            border: hasOutline
-                ? Border.all(
-                    color: CustomColors.green,
-                    width: 2,
-                  )
-                : null,
           ),
           child: InkWell(
-            customBorder: borderRadius != null
-                ? RoundedRectangleBorder(
-                    borderRadius: borderRadius!,
-                  )
-                : null,
+            borderRadius: borderRadius,
             onTap: onPressed,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  title.toUpperCase(),
-                  style: CustomTheme.textTheme.labelLarge?.copyWith(
-                    color: hasGradient ? CustomColors.white : null,
-                  ),
+            child: Center(
+              child: Text(
+                title.toUpperCase(),
+                style: CustomTheme.textTheme.labelLarge?.copyWith(
+                  color: hasGradient ? CustomColors.white : null,
                 ),
-              ],
+              ),
             ),
           ),
         ),
