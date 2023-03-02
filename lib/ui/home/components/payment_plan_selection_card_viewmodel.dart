@@ -26,6 +26,7 @@ class PaymentPlanSelectionCardViewModel extends IndexTrackingViewModel {
 
   void setPage(int index) {
     pageController.jumpToPage(index);
+    _setSelectedPaymentPlan(paymentPlans[index].id);
     setIndex(index);
   }
 
