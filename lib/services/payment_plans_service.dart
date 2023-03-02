@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import '../models/operation_result/operation_result.dart';
 import '../models/payment_plans_api/get_payment_plans/get_payment_plans_response.dart';
 import '../models/payment_plans_api/post_payment_plan/selected_payment_plan.dart';
 import '../stacked/stacked_app.locator.dart';
@@ -17,7 +18,8 @@ class PaymentPlansService {
     _paymentPlansCompleter.complete(_paymentPlansApiClient.getPaymentPlans());
   }
 
-  Future<void> postPaymentPlan(SelectedPaymentPlan paymentPlan) async {
-    await _paymentPlansApiClient.postPaymentPlan(paymentPlan);
+  Future<OperationResult<void, String>> postPaymentPlan(
+      SelectedPaymentPlan paymentPlan) async {
+    return _paymentPlansApiClient.postPaymentPlan(paymentPlan);
   }
 }

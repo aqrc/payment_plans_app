@@ -67,12 +67,30 @@ class HomeView extends StatelessWidget {
                       ],
                     ),
                     OutlinedGradientButton.gradient(
-                      onPressed: viewModel.submitSelectedPlan,
+                      onPressed: () async {
+                        final result = await viewModel.submitSelectedPlan();
+                        await _showResult(context, result);
+                      },
                       title: "Split my rent",
                     ),
                   ],
                 ),
         ),
+      ),
+    );
+  }
+
+  Future<void> _showResult(BuildContext context, String? result) async {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(result ?? "Success!"),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).maybePop(),
+            child: const Text("Close"),
+          ),
+        ],
       ),
     );
   }

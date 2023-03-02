@@ -31,13 +31,20 @@ class HomeViewModel extends FutureViewModel<GetPaymentPlansResponse> {
     selectedPaymentPlan = SelectedPaymentPlan(id: planId, dates: paymentDates);
   }
 
-  Future<void> submitSelectedPlan() async {
+  Future<String?> submitSelectedPlan() async {
     selectedPaymentPlan ??= SelectedPaymentPlan(
       id: paymentPlans.first.id,
       dates:
           paymentPlans.first.payments.map((payment) => payment.date).toList(),
     );
 
-    await _paymentPlansService.postPaymentPlan(selectedPaymentPlan!);
+    final result =
+        await _paymentPlansService.postPaymentPlan(selectedPaymentPlan!);
+    
+    if (result.isSuccessful) {
+      return null;
+    }
+
+    return result.error;
   }
 }
